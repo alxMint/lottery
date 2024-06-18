@@ -19,15 +19,15 @@ beforeEach(async () =>
 })
 
 
-describe('Lottery Contract', () => 
+describe('Contratto Lotteria', () => 
     {
-        it('deploys a contract', () => 
+        it('deploya un contratto', () => 
         {
             console.log(lottery);
             assert.ok(lottery.options.address);
         })
 
-        it('allows one account to enter', async() =>
+        it('consente di partecipare ad un account', async() =>
         {
             await lottery.methods.enter().send
             (
@@ -52,7 +52,7 @@ describe('Lottery Contract', () =>
 
 
 
-        it('allows multiple accounts to enter', async() =>
+        it('consente di partecipare a multipli account', async() =>
             {
                 await lottery.methods.enter().send
                 (
@@ -114,7 +114,7 @@ describe('Lottery Contract', () =>
 
             // FAILING TEST
             // value 0 < 0.1 eth
-            it('requires a minimum amount of ether to enter', async () => 
+            it('richiede un minimo di ether per partecipare', async () => 
                 { 
                     try 
                     { 
@@ -140,7 +140,7 @@ describe('Lottery Contract', () =>
 // controlla che le chiamate arrivino solo da utente autorizzato (manager)
     it
     (
-        'only manager can call pickWinner', async() =>
+        `solo il manager puo' eseguire l'estrazione del vincitore`, async() =>
         {
             try
             {
@@ -163,7 +163,7 @@ describe('Lottery Contract', () =>
 
     it 
     (
-        'sends money to the winner and resets the players array', async ()=>
+        'invia montepremi al vincitore e svuota elenco giocatori', async ()=>
         {
             await lottery.methods.enter().send(
                 {
